@@ -30,8 +30,14 @@ export default {
   data: function() {
     return {
       bitlySDK: function() {
+        var accessToken = process.env.VUE_APP_ACCESS_TOKEN;
+
+        if(!accessToken) {
+          console.error("Please provide a valid Bitly access token.");
+        }
+
         var b = new BitlySDK({
-          accessToken: "f2c70570b2aebede898c69ceefd806a75c86e7b3"
+          accessToken: process.env.VUE_APP_ACCESS_TOKEN
         });
 
         return b;
